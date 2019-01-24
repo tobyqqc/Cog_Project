@@ -1,0 +1,14 @@
+{
+  "cogdailyiphonel001": {
+    "time": "30",
+    "price": "25.00"
+  },
+  "cogdailyiphonel002": {
+    "time": "90",
+    "price": "68.00"
+  },
+  "cogdailyiphonel003": {
+    "time": "365",
+    "price": "248.00"
+  }
+}

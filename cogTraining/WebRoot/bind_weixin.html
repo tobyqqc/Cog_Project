@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>认知训练平台</title>
+	<!-- Bootstrap -->
+	<link href="${basePath}/assets/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="${basePath}/assets/css/login.css"> 
+<link rel="stylesheet" type="text/css" href="${basePath}/assets/css/gh.css"> 
+
+
+</head>
+<body style="background-color: #eee">
+  <nav class="navbar navbar-default" id="navbar">
+    <div class="container-fluid" id="navbar-content">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="${basePath!}/" id="navbar-brand-text">CogDaily</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-right">
+          <span>已经是会员？</span>
+          <a type="submit" class="btn btn-inverse btn-cog" id="btn-login" href="${basePath!}/register">创建账户</a>
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="alert alert-danger alert-dismissible hidden" role="alert" id="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+    <span aria-hidden="true">&times;</span></button>
+    <strong>用户名或密码错误!</strong>
+  </div>
+
+<!--main content-->
+ <div id="main-content">
+    <div class="login-box">
+      <div class="container" id="login-form">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h1 class="login-form-brand">绑定账号</h1>
+          
+          <#if hasLogin>
+              <!-- 已经登录表单 -->
+             <form class="form-group col-xs-12" id="bindForm" action="/wxlogin/bind" method="post">
+              <input type="hidden" name="login" value="false">
+              <div class="form-group">
+                <div class="input-group" data-toggle="popover" data-trigger="focus"  data-placement="top">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  </div>
+                  <input type="text" class="form-control middle-input" readonly="" value="${username!}">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-ok opacity_0" aria-hidden="true" id="hint_2"></span>
+                  </div>
+                </div> 
+              </div>
+
+              <div class="form-group">
+                <div class="input-group" data-toggle="popover" data-trigger="focus"  >
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                  </div>
+                  <input type="text" class="form-control middle-input" readonly="" value="${account!}">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-ok opacity_0" aria-hidden="true" id="hint_2"></span>
+                  </div>
+                </div> 
+              </div>
+
+   
+            
+             
+
+              <div class="form-group">
+                <button class="btn btn-cog btn-primary btn-block" type="submit" id="submit" >绑定当前账号</button> 
+
+              </div>
+              <p class="text-muted text-center" >  <a href="#" id="switch-account" style="color: #0074e8;">绑定其他账号</a>
+              </p>
+
+
+
+            </form>
+          </#if>
+    
+
+            <form class="form-group col-xs-12" id="loginBindForm" action="/wxlogin/bind" method="post" style="display: ${display}">
+              <input type="hidden" name="login" value="true">
+              <div class="form-group">
+                <div class="input-group" data-toggle="popover" data-trigger="focus" data-content="请输入正确的邮箱，如example@example.com，或者正确的11位手机号，不能为空" id="email_hint" data-placement="top">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                  </div>
+                  <input type="text" class="form-control middle-input" placeholder="请输入邮箱或手机号" id="email" name="accountInfo" required="">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-ok opacity_0" aria-hidden="true" id="hint_2"></span>
+                  </div>
+                </div> 
+              </div>
+
+              <div class="form-group">
+                <div class="input-group" data-toggle="popover" data-trigger="focus" data-content="以字母开头，长度在6~18之间，只能包含字母、数字和下划线" id="password_hint" data-placement="top">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                  </div>
+                  <input type="password" class="form-control middle-input" placeholder="请输入密码" id="password" name="password" required="">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-ok opacity_0" aria-hidden="true" id="hint_3"></span>
+                  </div>
+                </div>
+              </div>
+            
+
+
+              <div class="form-group">
+                <button class="btn btn-cog btn-primary btn-block" type="submit" id="submit" >登录并绑定</button> 
+
+              </div>
+              <p class="text-muted text-center" >  <a href="/register" style="color: #0074e8;">注册一个新账号</a>
+                  </p>
+
+
+            </form>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+    <#include "/common/bottom.html">
+
+  </div> 
+  <script src="${basePath}/assets/js/jquery.min.js"></script>
+  <script src="${basePath}/assets/js/bootstrap.min.js"></script>
+  <script src="${basePath!}/assets/layer/layer.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+       <#if hasNotify>
+       layer.ready(function(){
+          layer.confirm('请先绑定微信,操作更便捷', {
+                  btn: ['暂不绑定','确定'] //按钮
+                 
+                }, function(index){
+                   window.location="${to!}";
+                }, function(index){
+                 layer.close(index);
+              });
+
+
+       });
+    
+  
+
+
+
+
+    </#if>
+
+    $(document).ready(function(){
+      $("#switch-account").click(function(){
+          $("form#bindForm").hide();
+          $("form#loginBindForm").show();
+      });
+
+
+      $("form").submit(function(e){
+        e.preventDefault();
+        var _this=$(this);
+        $.ajax({
+          url:'/wxlogin/bind',
+          type:'post',
+          data:_this.serialize(),
+          success:function(data){
+              if(data.code==1){
+
+                layer.msg(data.msg);
+                var to="${to!}";
+                if(to.length==0)to="/";
+                window.location=to;
+
+              }
+              else{
+                layer.msg(data.msg);
+              }
+          },
+          error:function(){
+
+          }
+        });
+      });
+
+
+
+
+    });
+
+ 
+  </script>
+
+
+
+</body>
+</html>
+

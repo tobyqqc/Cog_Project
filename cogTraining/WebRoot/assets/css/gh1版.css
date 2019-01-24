@@ -1,0 +1,505 @@
+a:hover{
+	text-decoration: none;
+}
+a:focus{
+	outline: none;
+}
+o:hover{
+	color: #3dbade;
+
+}
+.gh-inline{
+	display: inline-block;
+}
+.gh-center{
+	text-align: center;
+}
+.gh-p100{
+	width: 100%;
+}
+.gh-100{
+	width: 100px;
+	height: 100px;
+}
+
+.gh-row100{
+	height: 100px;
+}
+
+.gh-40{
+	width: 40px;
+	height: 40px;
+}
+.gh-btn:hover{
+	cursor: pointer;
+}
+
+.third-site-icon{
+	padding: 10px;
+}
+.third-site-icon li{
+	padding: 5px 10px;
+}
+
+.gh-rotate{
+	  transition:All 0.4s ease-in-out;
+   	 -webkit-transition:All 0.4s ease-in-out;
+   	 -moz-transition:All 0.4s ease-in-out;
+   	 -o-transition:All 0.4s ease-in-out;
+}
+
+.gh-rotate:hover {
+  	transform:rotate(360deg);
+   	-webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
+    -ms-transform:rotate(360deg);
+}
+
+.gh-hidden{
+	display: none;
+}
+.gh-line{
+	height: 1px;
+	margin: 10px 0;
+	border: 0;
+	clear: both;
+	background-color:#e6e6e6; 
+}
+
+/*home page */
+.gh-badge-green{
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	color: white;
+	height: 20px;
+	top:-5px;
+
+	background-image: url(../img/circle-g.png);
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: center top;
+
+
+
+
+
+}
+
+.gh-badge-yellow{
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	color: white;
+	height: 20px;
+	top:-5px;
+
+	background-image: url(../img/circle-y.png);
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: center top;
+
+
+
+
+
+}
+
+
+
+.gh-badge-bg{
+	display: block;
+	background-color:green;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+}
+
+.gh-thumbnail{
+	margin-top:  10px;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+
+}
+
+
+.gh-lock{
+	position: absolute;
+	width: 100%;
+	height: 87px;	
+	background: url(../img/lock.png) no-repeat center;
+	background-size:auto 40px ;
+
+}
+
+.gh-link-btn{
+	margin: 10px 30px;
+	width:145px;
+}
+
+
+.gh-unlock-image{
+	width:40%;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.gh-title{
+	font-size: 30px;
+}
+
+
+#become-vip{
+	margin-left: 5px;
+	margin-top: 18px;
+	background-color: #eeeeee;
+	border-bottom-color: #cccccc;
+}
+#become-vip:hover{
+	background-color: #dbdbdb;
+	border-bottom-color: #cccccc;
+}
+
+
+#select-item-title{
+	padding-top: 20px;
+}
+
+.block-title{
+	width:120px;
+	height:40px;
+	line-height: 40px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	color: white;
+	text-align: center;
+	background: rgb(0,144,155);
+}
+
+.title-row{
+	text-align: center;
+	vertical-align: middle;
+
+}
+.pay-list-row{
+	margin-top: 50px;
+	width: 75%;
+	margin: 20px auto;
+	
+
+}
+.pay-item-wrap{
+	float: left;
+	width: 250px;
+
+	text-align: center;
+}
+.pay-item{
+	position: relative;
+	padding-top: 35px;
+	width: 180px;
+	height: 100px;
+	border: 1px solid rgb(0,144,155);
+	margin: 10px auto;
+	color:  rgb(0,144,155);
+	box-shadow: 3px 3px 2px 2px #0b6868;
+	font-size: 18px;
+	cursor: pointer;
+
+}
+.pay-item:hover{
+	box-shadow: 3px 3px 2px 2px #188a95;
+
+}
+.pay-item .mark{
+	position: absolute;
+	background-color:  rgb(0,144,155);
+	top: 5px;
+	left:0;
+	color:red;
+	text-align: left;
+	text-indent: 2px;
+	font-size: 16px;
+	height: 30px;
+	width:70px; 
+	line-height: 30px;
+	padding:0;
+	display: none;
+}
+
+.mark.active{
+	display: block;
+}
+
+
+.arrow-left {
+	float: right;
+    width:0; 
+    height:0; 
+    border-top:15px solid transparent;
+    border-bottom:15px solid transparent; 
+    border-right:15px solid white; 
+}
+
+.discount-row{
+	width: 75%;
+	margin: 20px auto;
+}
+.discount-control{
+	border:1px solid rgb(0,144,155); 
+	
+	text-align: center;
+	padding: 40px 100px;
+}
+
+#discount-code{
+	width: 300px;
+	height: 35px;
+	outline: none;
+	border: 1px solid rgb(0,144,155);
+}
+
+
+#discount-btn{
+
+
+}
+
+#order-submit{
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+#main-content{
+	padding-top: 96px;
+}
+
+/*pay his*/
+
+.gh-wrap{
+	position: relative;
+	background: #fff;
+	min-height: 600px;
+	padding: 50px 0;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.pay-his-item{
+	width: 350px;
+	height: 170px;
+	border:1px solid #c6c6c6; 
+	float: left;
+	border-radius: 3px;
+	margin: 10px 20px;
+
+
+
+}
+
+.pay-his-list{
+	width: 800px;
+
+	overflow: hidden;
+	margin: 40px auto;
+}
+.pay-left{
+
+	float: left;
+	width: 100px;
+	height: 100%;
+	display: table-cell;
+	vertical-align: middle;
+
+}
+.pay-right{
+	float: right;
+	width: 240px;
+
+}
+
+
+.pay-circle{
+	
+	color: white;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	border-radius: 30px;
+	background-color:#888f81 ;
+	border: 1px solid #eee;
+	font-size: 35px;
+	text-indent: 12px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: 20px;
+
+
+
+}
+.pay-circle-sky-blue{
+ background-color:#1ac0fa ;
+}
+
+.pay-circle-blue{
+ background-color:#179ffa ;
+}
+
+.pay-circle-green{
+ background-color:#3fb136 ;
+}
+
+
+.pay-circle-ygreen{
+ background-color:#bffa19 ;
+}
+
+
+.pay-inf{
+	margin-top: 30px;
+	padding-right: 20px;
+}
+
+.pay-inf span{
+
+}
+.inf-lab{
+	float: left;
+	width: 60px;
+}
+.inf-lab li{
+	list-style: none;
+}
+.inf-con li{
+	list-style: none;
+	width: 160px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+.inf-con{
+	float: left;
+	width: 160px;
+}
+.order-num{
+
+}
+
+.load-more{
+	width: 200px;
+}
+.load-more:hover{
+	background-color: #dbdbdb;
+}
+
+
+/*payment qr page*/
+.pay-logo{
+	width: 60px;
+	height: 60px;
+}
+
+.qr-wrap{
+	width: 970px;
+	margin:  20px auto;
+}
+
+.qr-row{
+	overflow: hidden;
+}
+.qr-row>*{
+	float: left;
+}
+#qr-title{
+	line-height: 60px;
+
+	margin: 0 20px;
+}
+#qr-subtitle{
+	line-height: 60px;
+	margin: 0 20px;
+}
+.money-wrap{
+	float: right;
+}
+.money-wrap>*{
+	float: left;
+}
+.money-sum{
+	line-height: 60px;
+	color: red;
+	font-size: 30px;
+}
+
+
+.unit{
+	line-height: 60px;
+	margin: 0 2px;
+	
+}
+
+
+.code-wrap{
+	margin: 20px  0;
+	padding-top: 60px;
+	background-color: #fff;
+	border:1px solid rgb(0,144,155);
+
+	height: 500px;
+	text-align: center;
+}
+
+#qr-code{
+	width: 200px;
+	height: 200px;
+	margin-bottom: 20px;
+
+}
+
+
+/*payment result*/
+
+
+
+
+.result-wrap{
+	width: 970px;
+	height: 500px;
+	margin:  0 auto;
+}
+
+.payinf-title{
+	color: rgb(0,144,155);
+
+}
+
+.pay-status-logo{
+	width: 150px;
+	height: 150px;
+}
+
+.payinf-content{
+	text-align: center;
+	padding-top: 50px;
+}
+
+.pay-status-text{
+	font-family: "黑体";
+	font-size: 30px;
+	font-weight: bold;
+
+}
+
+#repay-btn{
+	margin-top: 50px;
+	width: 100px;
+}
+
+/*pay page  redo*/

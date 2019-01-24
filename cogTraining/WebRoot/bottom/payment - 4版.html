@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>认知训练平台</title>
+
+	<!-- Bootstrap -->
+	<link href="${basePath!}/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${basePath!}/assets/css/cog.css">
+		<link rel="stylesheet" type="text/css" href="${basePath!}/assets/css/gh.css"> 
+
+	
+</head>
+<style type="text/css">
+	#main-content{
+		padding-top: 96px;
+	}
+</style>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+		<div class="container-fluid" id="navbar-content">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<#if (session["userInfo"])??>
+			<div class="navbar-header">
+				<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button> -->
+				<a class="navbar-brand" href="${basePath}/home" id="navbar-brand-text">CogDaily</a>
+
+
+			</div>
+			
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			
+			<#else>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="${basePath}/index" id="navbar-brand-text">CogDaily</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<form class="navbar-form navbar-right">
+					<a type="submit" class="btn btn-primary btn-cog" href="${basePath!}/register">
+						现在开始
+					</a>
+					<a type="submit" class="btn btn-inverse btn-cog" id="btn-login" href="${basePath!}/login">
+						登录
+					</a>
+				</form>
+			</div><!-- /.navbar-collapse -->
+			</#if>
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+	<!--main content-->
+	<div id="main-content">
+		<div id="part-1" style="background: none;">
+			<div class="container" id="about-part-1-inner">
+				<div class="row bluebg">
+					<div class="about-content-row">
+						<h3 class="whitetxt" style="margin-top: 10px;">成为会员</h3>
+					</div>
+
+				</div>
+			</div>	
+			<div class="container">
+<!-- 				<#list list as trainClass>
+	${trainClass.gameClassIds}
+	<br>
+	${trainClass.trainClassName}
+	<br>
+	<#list gameClassWithPriceList as gameClass>
+		${gameClass.gameClassName}
+		<br>
+		${gameClass.price}
+		<br>
+
+		<#list gameClassTimes as gameClassTime>
+			${gameClassTime.time}
+			<br>
+			${gameClassTime.value}
+			<br>
+		</#list>
+		<br>
+	</#list>
+	<br>
+
+</#list> -->
+
+				
+				<div class="gh-title gh-center" id="select-item-title">请选择您需要训练项目</div>
+
+
+				<div class="row title-row">
+					<div class="block-title">认知训练</div>
+				</div>
+				<div class="row pay-list-row" id="train-item-list">
+				 <div class="pay-list-wrap">
+						<!--	<div class="pay-item">
+							<div class="select-mark"></div>
+							<div class="sum">30<small class="unit">元</small></div>
+							<div class="unit-price">30元/月</div>
+							<div class="dashed-line"></div>
+							<div class="duration">1个月</div>
+						</div>
+					
+						<div class="pay-item">
+							<div class="select-mark"></div>
+							<div class="sum">90<small class="unit">元</small></div>
+							<div class="unit-price">30元/月</div>
+							<div class="dashed-line"></div>
+							<div class="duration">3个月</div>
+						</div>
+					
+						<div class="pay-item">
+							<div class="select-mark"></div>
+							<div class="sum">360<small class="unit">元</small></div>
+							<div class="unit-price">30元/月</div>
+							<div class="dashed-line"></div>
+							<div class="duration">12个月</div>
+						</div>
+					
+						<div class="pay-item active">
+							<div class="select-mark"></div>
+							<div class="sum"><span>90</span><small class="unit">元</small></div>
+							<div class="unit-price">30元/月</div>
+							<div class="dashed-line"></div>
+							<div class="duration custom-duration" >
+								<span class="v-btn glyphicon glyphicon-minus" id="sub-btn"></span>
+								<div class="dur-val-wrap">
+									<input type="text" class="duration-value" value="12"></input>
+							个月</div>
+								<span class="v-btn glyphicon glyphicon-plus" id="add-btn"></span>
+							</div>
+						</div> -->
+					</div>
+				</div>
+
+
+			
+				<div>
+
+
+					<form action="${basePath!}/alipayapi" method="post" style="display:none;" id="alipay-form" target="_blank">
+						<input type="hidden" name="gameClassIds" id="gameClassIds">
+						<input type="hidden" name="orderNo" id="orderNo">
+						<input type="hidden" name="gameDate" id="gameDate">
+					</form>
+				</div>
+
+				<div class="row title-row">
+					<div class="block-title">支付方式</div>
+				</div>
+
+				<div class="row pay-list-row">
+					<div class="pay-method-wrap" style="text-align: center;">
+
+						<div class="pay-method-item active" id="weixin-submit">
+							
+							<div><img class="pay-icon" src="${basePath!}/assets/img/weixinpay.png" alt=""></div>
+							<div class="pay-method-text" >微信支付</div>
+
+						</div>
+						<div class="pay-method-item active" id="alipay-submit">
+							
+							<div><img class="pay-icon" src="${basePath!}/assets/img/alipay.png" alt=""></div>
+							<div class="pay-method-text">支付宝支付</div>
+
+						</div>
+
+					</div>
+					
+				</div>
+				<div class="gh-row100"></div>
+
+
+				<div class="row title-row">
+<!-- 					<button class="btn btn-primary btn-cog" id="order-submit">提交订单</button> -->
+<!-- 					<button class="btn btn-primary btn-cog pay-sub-btn" id="weixin-submit">微信支付</button>
+<button class="btn btn-primary btn-cog pay-sub-btn" id="alipay-submit">支付宝支付</button> -->
+
+				</div>
+				
+
+
+
+			</div>
+		</div>
+
+	</div>
+	<!--main content-->
+	<#include "/common/bottom.html">	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="${basePath!}/assets/js/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="${basePath!}/assets/js/bootstrap.min.js"></script>
+	<script src="${basePath!}/assets/layer/layer.js" type="text/javascript"></script>
+	
+	<script src="${basePath!}/assets/qrcode/js/modernizr-2.8.3.js" type="text/javascript"></script>
+    <script src="${basePath!}/assets/qrcode/js/qrcode.min.js" type="text/javascript"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+
+			var h=$(window).height()-170;
+				$(".main-content").css({
+					'min-height':h+"px",
+				});
+				$("#main-content").css({
+					'min-height':h+"px",
+				});
+
+			$(window).resize(function(){
+				var h=$(window).height()-170;
+				$(".main-content").css({
+					'min-height':h+"px",
+				});
+				$("#main-content").css({
+					'min-height':h+"px",
+				});
+			});
+	
+			//每月单价 需计算
+			var unit_price=30;
+			var gameClassIds;
+			//ajax 请求相关信息
+			$.ajax({
+				url:"${basePath!}/payment/param",
+				type:"POST",
+				success:function(data){
+					if(data!=null){
+						unit_price=parseInt(data.unitPrice);
+						gameClassIds=data.gameClassIds;
+						//开始追加页面元素
+						$.each(data.gameClassTimes,function(i,item){
+							var sum=unit_price*parseInt(item.time);
+							var str='<div class="pay-item"><div class="select-mark"></div><div class="sum">'+
+							sum+'<small class="unit">元</small></div><div class="unit-price">'+unit_price+'元/月</div><div class="dashed-line"></div><div class="duration" value="'+item.time+'">'+
+							item.time+'个月</div></div>';
+
+							$(".pay-list-wrap").append(str);
+						});
+
+						//追加自定义月份栏
+						var ss='<div class="pay-item active">\
+							<div class="select-mark"></div>\
+							<div class="sum"><span>'+unit_price*3+'</span><small\ class="unit">元</small></div>\
+							<div class="unit-price">'+unit_price+'元/月</div>\
+								<div class="duration custom-duration" >\
+								<span class="v-btn glyphicon glyphicon-minus" id="sub-btn"></span>\
+								<div class="dur-val-wrap">\
+									<input type="text" class="duration-value" value="3"></input>\
+							个月</div>\
+								<span class="v-btn glyphicon glyphicon-plus" id="add-btn"></span>\
+							</div>\
+						</div>';
+						$(".pay-list-wrap").append(ss);
+
+
+						//事件绑定
+						$("#train-item-list").find(".pay-item").click(function() {
+	
+				
+							$(this).siblings().removeClass("active");
+							$(this).addClass("active");
+						});
+
+
+
+						//加号减号功能
+						$("#add-btn").click(function(){
+							var dur=parseInt($("input.duration-value").val());
+							if(dur<=0){
+								dur=1;
+							}
+							else{
+								dur++;
+							}
+							$("input.duration-value").val(dur);
+							$(this).parents(".pay-item").find(".sum span").text(unit_price*dur);
+
+						});
+
+
+						$("#sub-btn").click(function(){
+							var dur=parseInt($("input.duration-value").val());
+							if(dur<=1){
+								dur=1;
+							}
+							else{
+								dur--;
+							}
+							$("input.duration-value").val(dur);
+							$(this).parents(".pay-item").find(".sum span").text(unit_price*dur);
+
+						});
+
+						//直接输入月份
+						$("input.duration-value").change(function(){
+							//避免空输入
+							if($("input.duration-value").val().length==0){
+								$("input.duration-value").val(1);
+							}
+
+							var dur=parseInt($("input.duration-value").val());
+
+							if(dur<=0){
+								dur=1;
+								$("input.duration-value").val(dur);
+							}
+							$(this).parents(".pay-item").find(".sum span").text(unit_price*dur);
+						});
+
+
+					}
+				},
+			});
+
+			$("#discount-btn").click(function(e){
+				return false;
+			});
+
+
+			//订单按钮事件
+			$("#weixin-submit").click(function(){
+
+				//是否登录
+
+				<#if !(session["userInfo"])??>
+					layer.confirm("请先登录！",{icon:2,btn:["确定"]},function(){
+						window.location.href = "${basePath}/login";
+					});
+					return;
+				</#if>
+
+				//获取相关数据
+				var gameDate=$(".pay-item.active").find("[value]").val();
+				//如果没有取到val 则 非自定义 时长
+				if(gameDate.length==0){
+					gameDate=$(".pay-item.active").find("[value]").attr("value");
+				}
+				
+				if(isweixin()){
+					//微信端
+					 $.ajax({
+		                url : "${basePath!}/wxPay",
+		                method : "POST",
+		                dataType : "JSON",
+		                data : {
+		                	gameClassIds : gameClassIds,
+		                	gameDate : gameDate,
+		                	type : "weixin"
+		                },
+		                success : function(data) {
+
+		                	if(data.code==0){
+		                		if(data.msg=='wxNoLogin'){
+		                			window.location.href = "${basePath}/weixinLogin?type=weixin";
+		                		}
+		                		else{
+		                			layer.msg("支付数据异常");
+		                		}
+		                	}
+		                	else {
+
+
+		                		var obj= data.data;
+	                		  WeixinJSBridge.invoke('getBrandWCPayRequest', {
+	                              "appId": obj.appId,               //公众号名称，由商户传入
+	                              "timeStamp": obj.timeStamp,       //时间戳，自 1970 年以来的秒数
+	                              "nonceStr": obj.nonceStr,         //随机串
+	                              "package": obj.package,           //商品包信息
+	                              "signType": obj.signType,         //微信签名方式:
+	                              "paySign": obj.paySign            //微信签名
+	                          }, function (res) {
+	                              if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+	                                  window.location.href = "${basePath}/aboutUs";
+	                              }
+	                              else {
+	                                  window.history.back();
+	                              }
+	                          });
+		                	 }
+		                },
+		                error : function(data) {
+		                	layer.msg("服务器通信异常！");
+		                }
+					 });
+
+				}
+				else
+				{
+					//loading
+					var loading = layer.load(1, {
+  							shade: [0.1,'#fff'] //0.1透明度的白色背景
+					});
+					var paypage;
+					//浏览器端
+					 $.ajax({
+		                url : "${basePath!}/wxPay",
+		                method : "POST",
+		                dataType : "JSON",
+		                data : {
+		                	gameClassIds :gameClassIds,
+		                	gameDate : gameDate,
+		                	type : "noweixin"
+		                },
+		                success : function(data) {
+		                	layer.close(loading);
+
+		                	//返回错误信息
+		                	if(data.code==0){
+		                		layer.msg(data.msg);
+		                		return;
+		                	}
+		                	var amount=data.amount;
+		                	//准备弹出微信支付窗口
+		                	 var str='<div class="container" id="qrcode-container" >\
+								<div class="qr-wrap">\
+									<div class="qr-row">\
+										<img class="pay-logo" src="${basePath!}/assets/img/weixin.png">\
+										<h3 id="qr-title">游戏训练产品</h3>\
+										<span id="qr-subtitle">收款方：杭州华泰信息技术有限公司</span>\
+										<div class="money-wrap">\
+											<div class="money-sum">'+amount+'</div>\
+											<span class="unit">元</span>\
+										</div>\
+										</div>\
+									<div class="code-wrap">\
+										<h4>扫一扫付款（元）</h4>\
+										<div class="money-sum">'+amount+'</div>\
+										<div id="qr-code" ></div>\
+										<div>请用微信扫一扫进行支付</div>\
+									</div>\
+								</div>\
+							</div>';
+
+		                	paypage=layer.open({
+							  type: 1,
+							  
+							 
+							  shadeClose: false,
+							  shade: 0.7,
+							  area: ['800px', '600px'],
+							  content: str ,
+							}); 
+
+
+		                	var qrcode=new QRCode('qr-code',{
+		                		width:200,
+		                		height:200,
+
+		                	});
+		               
+		                	qrcode.clear();
+		                	qrcode.makeCode(data.qrcodeUrl);
+		                	//轮询订单支付情况
+		                	checkOrderStatus(data.orderNo);
+
+
+
+		                },
+		                error:function(){
+		                	layer.close(loading);
+		                	layer.msg("服务器通信异常！");
+		                }
+				 	});
+
+
+				}
+			});
+
+		$("#alipay-submit").click(function(){
+			//是否登录
+
+			<#if !(session["userInfo"])??>
+				layer.confirm("请先登录！",{icon:2,btn:["确定"]},function(){
+					window.location.href = "${basePath}/login";
+				});
+				return;
+			</#if>
+			//获取相关数据
+			var gameDate=$(".pay-item.active").find("[value]").val();
+			//如果没有取到val 则 非自定义 时长
+			if(gameDate.length==0){
+				gameDate=$(".pay-item.active").find("[value]").attr("value");
+			}
+				
+
+			// 支付宝网页支付
+			$.ajax({
+                url : "${basePath!}/alipayapi/generateOrderNo",
+                method : "POST",
+                dataType : "JSON",
+                async:false,
+                success : function(data) {
+                	
+                	$("#orderNo").val(data.data);
+                	$("#gameClassIds").val(gameClassIds);
+                	$("#gameDate").val(gameDate);
+                	checkOrderStatus(data.data)
+                	$("#alipay-form").submit();
+                },
+                error : function(data) {
+                	console.log("error:" + data.data);
+                }
+           	 });
+
+		});
+		
+
+});
+	
+		$(function() {
+		  
+		   if (isweixin()) {
+			   $("#alipay-submit").hide();
+		   }
+		})
+	 
+		
+
+	
+		function checkOrderStatus(orderNo) {
+			console.log("checkOrderStatus");
+			var repeat = 200;  // 限制执行次数为200次  
+            var timer = setInterval(function() {      
+                if (repeat == 0) {  
+                    clearInterval(timer);  
+                    //处理页面提示信息  
+                } else {  
+                    //Ajax后台轮询 查询订单状态  
+                    $.ajax({  
+                        url: "${basePath!}/order/checkStatus",  
+                        type: "post",  
+                        data: {  
+                            orderNo: orderNo  
+                        },  
+                        success: function(data) {  
+                            if(data == '1'){  
+                                clearInterval(timer);  
+
+                                window.location.href = "${basePath!}/paySuccess";  
+                            }  
+                        }  
+                    });  
+                      
+                    repeat--;  
+                }  
+            }, 3000);//3秒执行一次 总共200次 10分钟  
+		}
+
+
+		
+		
+
+
+        function isweixin() {
+        	var ua = window.navigator.userAgent.toLowerCase();
+        	//console.log(ua);//mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
+        	if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        		return true;
+        	} else {
+        		return false;
+        	}
+        }
+        
+/*		window.onload=function(){
+			var s_height=$(window).height();
+			var navbar_height=$("#navbar").outerHeight();
+			// $("#part-1").height(s_height-navbar_height);
+			//$("#part-1").css("margin-top",navbar_height);
+			//$("#part-1").css("min-height",(s_height-navbar_height)+"px");
+  			$("#part-1").css("min-height",(656)+"px");
+  		}*/
+  	</script>
+  </body>
+  </html>

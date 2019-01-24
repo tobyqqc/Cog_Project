@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://120.27.234.232/legal -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>认知训练平台</title>
+
+	<!-- Bootstrap -->
+	<link href="${basePath!}/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${basePath!}/assets/css/cog.css">
+
+	
+</head>
+<body>
+	<!--main content-->
+	<div id="main-content">
+		<div id="part-1" style="background: none;>
+			<div class="container" id="about-part-1-inner">
+				<div class="row bluebg" style="display: none;">
+					<div class="about-content-row">
+						<h3 class="whitetxt" style="margin-top: 10px;">隐私政策</h3>
+					</div>
+				</div>
+				<div class="about-content-row">
+					<h5 class="terms-of-service-content-1">
+						为了更高效的给用户传达有关认知的信息，那些给我们提供了姓名、地址、邮箱、和其他信息的用户，我们会将此类信息缓存于您的设备（该设备可能包括台式电脑、笔记本电脑、手机或者平板），下次当您重新登陆的时候，我们就可以直接完成登陆，记住您的用户名。我们为了改善网站，会收集您的匿名信息和浏览习惯以及分析网页浏览情况。这些是通过浏览器统计和使用者设备缓存实现的。这些缓存信息不收集任何个人信息，所有的访问者都是匿名。我们绝不泄露这些数据给广告商或合作伙伴的第三方，绝无任何第三方可以使用这些数据，我们也不允许任何第三方在此使用缓存技术。
+					</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--main content-->
+
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="${basePath!}/assets/js/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="${basePath!}/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var s_height=$(window).height();
+			var navbar_height=$("#navbar").outerHeight();
+			// $("#part-1").height(s_height-navbar_height);
+			$("#part-1").css("margin-top",navbar_height);
+  			// $("#part-2").css("min-height",(s_height-navbar_height)+"px");
+  			
+  			
+  		}
+  		
+
+
+  	</script>
+  
+  
+</body></html>

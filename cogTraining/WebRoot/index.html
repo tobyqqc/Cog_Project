@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>认知训练平台</title>
+
+	<!-- Bootstrap -->
+	<link href="${basePath!}/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${basePath!}/assets/css/cog.css">
+
+	<style type="text/css">
+		.ani{
+			background-image: url(${basePath!}/assets/img/banner_1.png);
+			
+			animation:myfirst infinite 20s;
+			-moz-animation:myfirst infinite 20s; /* Firefox */
+			-webkit-animation:myfirst infinite 20s; /* Safari and Chrome */
+			-o-animation:myfirst infinite 20s; /* Opera */
+		}
+
+		@keyframes myfirst
+		{
+			0%   {background-image: url(${basePath!}/assets/img/banner_1.png);}
+			20%  {background-image: url(${basePath!}/assets/img/banner_2.png);}
+			40%  {background-image: url(${basePath!}/assets/img/banner_3.png);}
+			60% {background-image: url(${basePath!}/assets/img/banner_4.png);}
+			80% {background-image: url(${basePath!}/assets/img/banner_5.png);}
+			100% {background-image: url(${basePath!}/assets/img/banner_1.png);}
+		}
+
+		@-moz-keyframes myfirst /* Firefox */
+		{
+			0%   {background-image: url(${basePath!}/assets/img/banner_1.png);}
+			20%  {background-image: url(${basePath!}/assets/img/banner_2.png);}
+			40%  {background-image: url(${basePath!}/assets/img/banner_3.png);}
+			60% {background-image: url(${basePath!}/assets/img/banner_4.png);}
+			80% {background-image: url(${basePath!}/assets/img/banner_5.png);}
+			100% {background-image: url(${basePath!}/assets/img/banner_1.png);}
+		}
+
+		@-webkit-keyframes myfirst /* Safari and Chrome */
+		{
+			0%   {background-image: url(${basePath!}/assets/img/banner_1.png);}
+			20%  {background-image: url(${basePath!}/assets/img/banner_2.png);}
+			40%  {background-image: url(${basePath!}/assets/img/banner_3.png);}
+			60% {background-image: url(${basePath!}/assets/img/banner_4.png);}
+			80% {background-image: url(${basePath!}/assets/img/banner_5.png);}
+			100% {background-image: url(${basePath!}/assets/img/banner_1.png);}
+		}
+
+		@-o-keyframes myfirst /* Opera */
+		{
+			0%   {background-image: url(${basePath!}/assets/img/banner_1.png);}
+			20%  {background-image: url(${basePath!}/assets/img/banner_2.png);}
+			40%  {background-image: url(${basePath!}/assets/img/banner_3.png);}
+			60% {background-image: url(${basePath!}/assets/img/banner_4.png);}
+			80% {background-image: url(${basePath!}/assets/img/banner_5.png);}
+			100% {background-image: url(${basePath!}/assets/img/banner_1.png);}
+		}
+	</style>
+</head>
+<body style="background-color: #eee">
+	<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+		<div class="container-fluid" id="navbar-content">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" id="navbar-brand-text">CogDaily</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+				<form class="navbar-form navbar-right">
+					<a type="submit" class="btn btn-primary btn-cog" href="${basePath!}/register">现在开始</a>
+					<a type="submit" class="btn btn-inverse btn-cog" id="btn-login" href="${basePath!}/login">登录</a>
+				</form>
+
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+
+
+	<!--main content-->
+	<div id="main-content">
+		<div id="part-1" class="">
+			<div class="container" id="part-1-inner">
+				<div class="wrap">
+					<div class="col-xs-12">
+						<h2 class="part-1-inner-txt">享受由科学家和游戏设计师推荐的大脑认知训练源于科学，值得信赖</h2>
+						<h4 class="part-1-inner-txt">从今天开始加入我们的大脑认知训练营吧</h4>
+						<p style="text-align: center;margin: 50px auto;"><a type="submit" class="btn btn-primary btn-cog btn-lg pull-center" href="${basePath!}/register">现在开始</a></p>
+					</div>
+
+				</div>
+
+				<div>
+					<a data-click="scroll-top" href="javascript:;"><h1 style="color: white;text-align: center;cursor: pointer;margin: 0;"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></h1></a>
+				</div>
+			</div>
+		</div>
+
+		<div id="part-2">
+			<div class="container" id="part-2-inner">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox" id="part-2-inner-carousel">
+						<div class="item active">
+							<img src="${basePath!}/assets/img/index_part_2_step_1.png">
+
+							<h3>1.您的脑力基数</h3>
+							<p class="hidden-xs">通过三个游戏的基础测试，将您的脑力基数与同龄人比较，判断出您的优势或劣势。</p>
+
+						</div>
+						<div class="item">
+							<img src="${basePath!}/assets/img/index_part_2_step_2.png">
+							<h3>2.完成日常训练</h3>
+							<p class="hidden-xs">根据您的脑力基数，系统将给您推荐三个含训练难度的核心认知技能的日常训练，让您始终具有挑战的感觉。</p>
+						</div>
+						<div class="item">
+							<img src="${basePath!}/assets/img/index_part_2_step_3.png">
+							<h3>3.实时追踪您的能力指数</h3>
+							<p class="hidden-xs">训练中记录您最擅长的认知技能，并将数据分析后自动推荐下一轮的训练任务。</p>
+						</div>
+					</div>
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					</ol>
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="part-3">
+			<div class="container" id="part-3-inner">
+				<div class="col-xs-12">
+					<div class="row">
+						<h1 class="part-3-txt">我们将专业的数据测量方法融入到有趣的训练任务中</h1>
+						<h3 class="part-3-txt-2">近年来，根据科学家对认知能力的测量方法和计算标准，我们设计并开发了30多个大脑认知训练游戏。</h3>
+					</div>
+					<div class="row">
+						<p class="part-3-img col-xs-12">
+							<img src="${basePath!}/assets/img/index_part_3.png">
+						</p>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-xs-12">
+							<h3 class="part-3-txt-3">认知心理学专门研究这些训练任务</h3>
+							<h4 class="part-3-txt-4">我们的研发团队将确保每个认知训练任务的科学性。</h4>
+						</div>
+						<div class="col-md-6 col-xs-12">
+							<h3 class="part-3-txt-3">训练任务情景化</h3>
+							<h4 class="part-3-txt-4">设计师给不同年龄段的人设计训练任务不仅要确保训练任务的功能和主题，同时兼顾每个训练的趣味性，简明性。</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="part-4">
+			<div class="container" id="part-4-inner">
+				<div class="col-xs-12">
+
+					<div class="row">
+						<h1 class="part-4-txt">我们的科学团队研究了认知训练的功能效果</h1>
+						<h4 class="part-4-txt-2">我们随机选择了一项十字填字游戏的实验研究。</h4>
+					</div>
+					<div class="row">
+						<p class="part-4-img col-xs-12">
+							<img src="${basePath!}/assets/img/index_part_4.png">
+						</p>
+					</div>
+					<div class="row">
+						<div class="col-md-4 col-xs-12">
+							<h3 class="part-4-txt-3">我们所做的</h3>
+							<h4 class="part-4-txt-4">我一半被试参加的实验组使用我们开发的大脑认知训练，另外一半被试参加的控制组采用在线十字填字训练。</h4>
+						</div>
+						<div class="col-md-4 col-xs-12">
+							<h3 class="part-4-txt-3">我们发现</h3>
+							<h4 class="part-4-txt-4">十周后，实验组的认知能力比控制组有明显的提高。</h4>
+						</div>
+						<div class="col-md-4 col-xs-12">
+							<h3 class="part-4-txt-3">下一个问题</h3>
+							<h4 class="part-4-txt-4">尽管研究结果表明是极其有效的，但仍然需要做更多的研究来确定和改进的评估分数之间的联系，以及日常任务参与者的生活。</h4>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="part-5">
+			<div class="container" id="part-5-inner">
+				<div class="col-xs-12">
+
+					<div class="row">
+						<h1 class="part-5-txt">我们与合作机构</h1>
+						<h4 class="part-5-txt-2">杭州华泰医疗科技有限公司与东南大学学习科学研究中心情感信息处理研究室，北京师范大学脑与认知科学研究所，北京大学IDO麦戈文脑科学研究所，南加州大学，英国赫尔本大学，浙江大学，浙江工业大学等众多国内外知名大学及其研究所建立了良好的合作关系。</h4>
+					</div>
+					<div class="row">
+						<p class="part-5-img col-xs-12">
+							<img src="${basePath!}/assets/img/index_part_5.png">
+						</p>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+
+		<#include "/common/bottom.html">
+
+	</div>
+	<!--main content-->
+
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="${basePath!}/assets/js/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="${basePath!}/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101407876" 
+  			charset="utf-8"></script>
+	
+	<script type="text/javascript">
+		window.onload=function(){
+			var s_height=$(window).height();
+			var navbar_height=$("#navbar").outerHeight();
+			$("#part-1").height(s_height-navbar_height);
+			$("#part-1").css("margin-top",navbar_height);
+  			// $("#part-2").css("min-height",(s_height-navbar_height)+"px");
+  			
+  			$("[data-click=scroll-top]").click(
+  				function(e){
+  					e.preventDefault();
+  					$("html, body").animate({scrollTop:$("#part-2").offset().top-navbar_height},500)
+  				});
+  			preload_img(1);
+  		}
+  		function preload_img (ii) {
+  			console.log("preload img:"+ii);
+  			var img = new Image(); 
+  			img.src = "${basePath!}/assets/img/banner_"+ii+".png"; 
+  			img.onload = function(){  
+  				if (ii==5) {
+  					$("#part-1").addClass("ani");
+  				}else {
+  					ii=ii+1;
+  					preload_img(ii);
+  				}
+  			}; 
+  		}
+		
+  		if(QC.Login.check()){//如果已登录
+  			// 退出登录
+  			QC.Login.signOut();
+  	  	}
+
+  	</script>
+  </body>
+  </html>

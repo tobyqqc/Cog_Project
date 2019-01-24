@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>认知训练平台</title>
+
+	<!-- Bootstrap -->
+	<link href="${basePath!}/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${basePath!}/assets/css/home.css">
+	
+</head>
+<body style="background-color: #eee" onload="closeWindow();">
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand cog-brand" href="${basePath}/index">CogDaily</a>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<div class="main-content" id="main-content">
+		<div id="part-1">
+			<div class="container" style="width: 100%">
+				<div class="col-xs-12 cols">
+					<div class="part-right col-xs-12 col-md-12">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<div class="row setting-row last-setting-row center-block">
+											<div class="col-xs-12">
+												<input type="hidden" id="userId" name="userId" value="${userId}">
+												<h2 class="setting-row-headers"><strong>登录成功</strong></h2>
+												<div id="daojishi"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<#include "/common/bottom.html">
+	</div>
+</body>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="${basePath!}/assets/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="${basePath!}/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
+<script type="text/javascript">
+	QC.Login.getMe(function(openId, accessToken){
+		//alert(["当前登录用户的--loginsuccess", "openId为："+openId, "accessToken为："+accessToken].join("\n"));
+		var userId = $("#userId").val();
+		var html = "";
+	  		html += "<form id='saveOpenId' action='${basePath}/qqLoginBindNotify'>";
+	  		html += "<input id='openId' type='hidden' name='openId' value='"+ openId +"'>";
+	  		html += "<input id='userId' type='hidden' name='userId' value='"+ userId +"'>";
+	  		html += "</form>";
+	  		$("#main-content").append(html);
+	  		$("#saveOpenId").submit();
+	})
+		
+</script>
+</body>
+</html>

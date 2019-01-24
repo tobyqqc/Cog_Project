@@ -1,0 +1,876 @@
+a:hover{
+	text-decoration: none;
+}
+a:focus{
+	outline: none;
+}
+o:hover{
+	color: #3dbade;
+
+}
+.main-content{
+	min-height: 700px;
+}
+.gh-inline{
+	display: inline-block;
+}
+.gh-center{
+	text-align: center;
+}
+.gh-p100{
+	width: 100%;
+}
+.gh-100{
+	width: 100px;
+	height: 100px;
+}
+
+.gh-row100{
+	height: 100px;
+}
+
+.gh-40{
+	width: 40px;
+	height: 40px;
+}
+.gh-btn:hover{
+	cursor: pointer;
+}
+
+.third-site-icon{
+	padding: 10px;
+}
+.third-site-icon li{
+	padding: 5px 10px;
+}
+
+.gh-rotate{
+	  transition:All 0.4s ease-in-out;
+   	 -webkit-transition:All 0.4s ease-in-out;
+   	 -moz-transition:All 0.4s ease-in-out;
+   	 -o-transition:All 0.4s ease-in-out;
+}
+
+.gh-rotate:hover {
+  	transform:rotate(360deg);
+   	-webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
+    -ms-transform:rotate(360deg);
+}
+
+.gh-hidden{
+	display: none;
+}
+.gh-line{
+	height: 1px;
+	margin: 10px 0;
+	border: 0;
+	clear: both;
+	background-color:#e6e6e6; 
+}
+
+/*home page */
+.gh-badge-green{
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	color: white;
+	height: 20px;
+	top:-5px;
+
+	background-image: url(../img/circle-g.png);
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: center top;
+
+
+
+
+
+}
+
+.gh-badge-yellow{
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	color: white;
+	height: 20px;
+	top:-5px;
+
+	background-image: url(../img/circle-y.png);
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: center top;
+
+
+
+
+
+}
+
+
+
+.gh-badge-bg{
+	display: block;
+	background-color:green;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+}
+
+.gh-thumbnail{
+	margin-top:  10px;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+
+}
+
+
+.gh-lock{
+	position: absolute;
+	width: 100%;
+	height: 87px;	
+	background: url(../img/lock.png) no-repeat center;
+	background-size:auto 40px ;
+
+}
+
+.gh-link-btn{
+	margin: 10px 30px;
+	width:145px;
+}
+
+
+.gh-unlock-image{
+	width:120px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.gh-title{
+	font-size: 30px;
+}
+
+
+
+
+#select-item-title{
+	padding-top: 20px;
+}
+
+.block-title{
+	width:120px;
+	height:40px;
+	line-height: 40px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	color: white;
+	text-align: center;
+	background: rgb(0,144,155);
+}
+
+.title-row{
+	text-align: center;
+	vertical-align: middle;
+
+}
+.pay-list-row{
+	
+	width: 75%;
+	margin: 20px auto;
+	margin-top: 50px;
+
+ 
+
+}
+/*
+.pay-item-wrap{
+	float: left;
+	width: 250px;
+
+	text-align: center;
+}
+.pay-item{
+	position: relative;
+	padding-top: 15px;
+	width: 180px;
+	height: 120px;
+	border: 1px solid rgb(0,144,155);
+	margin: 10px auto;
+	color:  rgb(0,144,155);
+	
+	font-size: 15px;
+	cursor: pointer;
+
+}
+.pay-item:hover{
+	background-color: rgba(176,219,224,0.4);
+
+}
+
+.pay-item.active{
+	background-color: rgba(0,144,155,0.3);
+}
+
+
+.pay-item-name{
+	font-size: 20px;
+}
+
+.pay-item-time{
+	margin-top: 20px;
+	font-size: 25px;
+}
+.unit-price{
+	line-height: 40px;
+	height: 40px;
+}
+
+.unit-price .val{
+	padding-left: 10px;
+	font-size: 35px;
+}
+.pay-item-tip{
+	
+	font-size: 12px;
+}
+*/
+
+
+.arrow-left {
+	float: right;
+    width:0; 
+    height:0; 
+    border-top:15px solid transparent;
+    border-bottom:15px solid transparent; 
+    border-right:15px solid white; 
+}
+
+.discount-row{
+	width: 75%;
+	margin: 40px auto 0 auto;
+}
+.discount-control{
+	
+	
+	text-align: center;
+	padding-top: 40px;
+}
+
+#discount-code{
+	width: 100%;
+	height: 35px;
+	outline: none;
+	border: 1px solid rgb(0,144,155);
+	text-indent: 10px;
+}
+
+#discount-label{
+	width: 80%;
+}
+
+#discount-btn{
+
+
+}
+
+.pay-sub-btn{
+	width: 120px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+#order-submit{
+	margin-top: 20px;
+	margin-bottom: 40px;
+	width: 150px;
+}
+
+/* #main-content{
+	padding-top: 96px;
+} */
+
+/*pay his*/
+
+.gh-wrap{
+	position: relative;
+	background: #fff;
+	min-height: 600px;
+	padding: 50px 0;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.pay-his-item{
+	width: 350px;
+	height: 170px;
+	border:1px solid #c6c6c6; 
+	float: left;
+	border-radius: 3px;
+	margin: 10px 20px;
+
+
+
+}
+
+.pay-his-list{
+	width: 800px;
+
+	overflow: hidden;
+	margin: 40px auto;
+}
+.pay-left{
+
+	float: left;
+	width: 100px;
+	height: 100%;
+	display: table-cell;
+	vertical-align: middle;
+
+}
+.pay-right{
+	float: right;
+	width: 240px;
+
+}
+
+/*
+.pay-circle{
+	
+	color: white;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	border-radius: 30px;
+	background-color:#888f81 ;
+	border: 1px solid #eee;
+	font-size: 35px;
+	text-indent: 12px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: 20px;
+
+
+
+}*/
+
+
+
+.pay-inf{
+	margin-top: 30px;
+	padding-right: 20px;
+}
+
+.pay-inf span{
+
+}
+.inf-lab{
+	float: left;
+	width: 60px;
+}
+.inf-lab li{
+	list-style: none;
+}
+.inf-con li{
+	list-style: none;
+	width: 160px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+.inf-con{
+	float: left;
+	width: 160px;
+}
+.order-num{
+
+}
+
+.load-more{
+	width: 200px;
+}
+.load-more:hover{
+	background-color: #dbdbdb;
+}
+
+
+/*payment qr page*/
+.pay-logo{
+	width: 60px;
+	height: 60px;
+}
+#qrcode-container{
+	width: 700px;
+}
+.qr-wrap{
+	width: 660px;
+	margin:  20px auto;
+}
+
+.qr-row{
+	overflow: hidden;
+}
+.qr-row>*{
+	float: left;
+}
+#qr-title{
+	line-height: 60px;
+
+	margin: 0 20px;
+}
+#qr-subtitle{
+	line-height: 60px;
+	margin: 0 20px;
+}
+.money-wrap{
+	float: right;
+}
+.money-wrap>*{
+	float: left;
+}
+.money-sum{
+	line-height: 60px;
+	color: red;
+	font-size: 30px;
+}
+
+
+.unit{
+	line-height: 60px;
+	margin: 0 2px;
+	
+}
+
+
+.code-wrap{
+	margin: 20px  0;
+	padding-top: 60px;
+	background-color: #fff;
+	border:1px solid rgb(0,144,155);
+
+	height: 420px;
+	text-align: center;
+}
+
+#qr-code{
+	text-align: center;
+	
+	height: 200px;
+	margin-bottom: 20px;
+
+}
+#qr-code img{
+	margin: 0 auto;
+}
+
+
+/*payment result*/
+
+
+
+
+.result-wrap{
+
+	margin:  0 auto;
+}
+
+.payinf-title{
+	color: rgb(0,144,155);
+
+}
+
+.pay-status-logo{
+	width: 150px;
+	height: 150px;
+}
+
+.payinf-content{
+
+	text-align: center;
+	padding-top: 50px;
+	margin-bottom: 100px;
+}
+
+.pay-status-text{
+	font-family: "黑体";
+	font-size: 30px;
+	font-weight: bold;
+
+}
+
+#repay-btn{
+	margin-top: 50px;
+	width: 100px;
+}
+
+/*pay his page  redo*/
+#pay-his-tab{
+
+	margin: 0 auto;
+}
+#pay-his-tab th{
+	padding-left: 20px;
+	width: 100px;
+	height: 60px;
+}
+
+#pay-his-tab th.type{
+	width: 100px;
+}
+#pay-his-tab th.time{
+	width: 150px;
+}
+
+#pay-his-tab th.name{
+	width: 400px;
+}
+#pay-his-tab th.amount{
+	width: 100px;
+}
+#pay-his-tab th.status{
+	width: 100px;
+}
+
+#pay-his-tab tr{
+	border-bottom: 1px solid #ededed;
+
+}
+#pay-his-tab tbody tr{
+	height: 80px;
+}
+#pay-his-tab td{
+	padding-left: 20px;
+}
+
+
+.pay-his-list{
+	width: 100%;
+	padding: 0 50px;
+}
+
+.pay-circle{
+	margin: 0;
+	color: white;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 25px;
+	background-color:#888f81 ;
+	border: 1px solid #eee;
+	font-size: 30px;
+	text-indent: 10px;
+
+
+}
+
+.pay-circle-sky-blue{
+ background-color:#1ac0fa ;
+}
+
+.pay-circle-blue{
+ background-color:#179ffa ;
+}
+
+.pay-circle-green{
+ background-color:#3fb136 ;
+}
+
+
+.pay-circle-ygreen{
+ background-color:#bffa19 ;
+}
+
+
+
+/*pay page third modify*/
+
+.pay-list-wrap{
+	width: 620px;
+	margin: 0 auto;
+
+}
+
+.pay-item{
+	width: 180px;
+	height: 210px;
+	border: 2px solid rgb(229,229,229);
+	border-radius: 2px;
+	padding: 20px 20px 10px 20px;
+	cursor: pointer;
+	text-align: center;
+	display: inline-block;
+	margin: 10px;
+	overflow: hidden;
+	position: relative;
+	background-color: rgb(250,250,250);
+}
+.pay-item.active{
+	border-color: rgb(57,138,236);
+}
+
+.pay-item .sum{
+	font-size: 50px;
+	color: rgb(49,49,49);
+}
+.pay-item .unit{
+	font-size: 18px;
+	font-weight: bold;
+	color: rgb(150,150,150);
+
+}
+.pay-item .unit-price{
+	font-size: 18px;
+	margin-bottom: 30px;
+	color: rgb(150,150,150);
+}
+.pay-item .dashed-line{
+	height: 0;
+	border-top: 1px dashed rgb(150,150,150);
+}
+
+
+
+.pay-item .duration{
+	font-size: 22px;
+	
+	line-height: 50px;
+	
+}
+.pay-item .custom-duration{
+	position: absolute;
+	left: -2px;
+	right: -2px;
+	bottom: 0;
+	text-align: left;
+	margin-top: 0;
+	border-top: 2px solid rgb(229,229,229);
+	background-color: rgb(250,250,250);
+	
+}
+.pay-item .v-btn{
+	width:48px;
+	height: 48px;
+	line-height: 50px;
+	color:  rgb(150,150,150);
+	font-size: 15px;	
+	background-color: rgb(250,250,250);
+	text-align: center;
+	
+}
+
+.pay-item .duration-value{
+	display: inline;
+	width: 26px;
+	height: 50px;
+	line-height: 50px;
+	outline: none;
+	border: 0;
+	background-color: rgb(250,250,250);
+	text-align: right;
+
+}
+
+.pay-item #add-btn{
+	float: right;
+}
+.pay-item #sub-btn{
+	float: left;
+}
+
+.pay-item .dur-val-wrap{
+	float: left;
+	width: 84px;
+	height: 50px;
+	line-height: 50px;
+	border-left: 2px solid rgb(229,229,229);
+	border-right: 2px solid rgb(229,229,229);
+	
+}
+.pay-item .select-mark{
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	background-image: url(../img/mark-right.png);
+}
+.pay-item.active .select-mark{
+	display: block;
+}
+
+@media screen and (max-width: 1198px){
+	.pay-list-wrap{
+		width: 620px;
+		margin: 0 auto;
+	}
+	.pay-method-wrap{
+		width: 620px;
+		margin: 0 auto;
+	}
+
+ }
+
+@media screen and (max-width: 990px){
+	.pay-list-wrap{
+		width: 420px;
+		margin: 0 auto;
+	}
+	.pay-method-wrap{
+		width: 420px;
+		margin: 0 auto;
+	}
+
+ }
+
+/*适应微信 移动端 支付选项适配 360px*/
+@media screen and (max-width: 560px){
+	.pay-list-row{
+		width: 90%;
+	}
+
+	.pay-item{
+		width: 120px;
+		height:140px;
+		padding: 10px 10px 5px 10px;
+	}
+
+
+	.pay-item .sum{
+		font-size: 30px;
+		line-height: 30px;
+		height: 50px;
+	}
+
+
+	.pay-item .unit{
+		font-size: 12px;
+		
+	}
+	.pay-item .unit-price{
+		font-size: 12px;
+		margin-bottom: 20px;
+
+	}
+
+
+
+
+	.pay-item .duration{
+		font-size: 14px;
+		
+		line-height: 40px;
+		
+	}
+
+	.pay-item .v-btn{
+		width:30px;
+		height: 40px;
+		line-height: 40px;
+		color:  rgb(150,150,150);
+		font-size: 15px;
+		
+		background-color: rgb(250,250,250);
+		text-align: center;
+		
+	}
+
+	.pay-item .duration-value{
+
+		width: 18px;
+		height: 30px;
+		line-height: 30px;
+
+
+	}
+
+
+
+	.pay-item .dur-val-wrap{
+
+		width: 60px;
+		height: 40px;
+		line-height: 40px;
+
+		
+	}
+	.pay-item .select-mark{
+
+		width: 30px;
+		height: 30px;
+		background-size: 30px 30px;
+		
+	}
+
+	#discount-label{
+		width: 100%;
+	}
+
+ }
+
+ /*适应微信 移动端 支付选项适配 515px*/
+@media screen and (max-width: 515px){
+	.pay-list-wrap{
+		width: 290px;
+		margin: 0 auto;
+	}
+	.pay-method-wrap{
+		width: 290px;
+		margin: 0 auto;
+	}
+
+ }
+
+ .pay-method-item{
+ 	width: 180px;
+	height: 60px;
+	border: 2px solid rgb(229,229,229);
+	border-radius: 2px;
+	padding: 10px 20px;
+	cursor: pointer;
+	text-align: center;
+	display: inline-block;
+	margin: 10px;
+	overflow: hidden;
+	position: relative;
+	background-color: rgb(250,250,250);
+ }
+
+.pay-method-item .select-mark{
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 25px;
+	height: 25px;
+	background-image: url(../img/mark-right.png);
+	background-size: 25px 25px;
+}
+.pay-method-item.active .select-mark{
+	display: block;
+}
+.pay-method-item.active{
+	border-color: rgb(57,138,236);
+}
+
+
+.pay-method-item .pay-icon{
+	width: 40px;
+	float: left;
+}
+
+.pay-method-text{
+	font-size: 15px;
+	line-height: 40px;
+}
+
+.pay-method-item:hover{
+	background-color: rgba(57,138,236,0.4);
+}

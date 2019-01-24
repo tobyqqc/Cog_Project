@@ -1,0 +1,13 @@
+.idea/
+.metadata/
+.settings/
+doc/
+.classpath
+.project
+*.sql
+*.iml
+*.jar
+*.properties
+./WebRoot/resources/
+./WebRoot/resources/*
+./WebRoot/resources

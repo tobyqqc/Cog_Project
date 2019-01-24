@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>认知训练平台</title>
+
+	<!-- Bootstrap -->
+	<link href="${basePath!}/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${basePath!}/assets/css/home.css">
+
+	
+
+	<link rel="stylesheet" type="text/css" href="${basePath!}/assets/css/gh.css"> 
+</head>
+<style type="text/css">
+
+
+
+</style>
+
+<body style="background-color: #eee">
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand cog-brand" href="#">CogDaily</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="${basePath!}/home">主页 </a></li>
+					<li><a href="${basePath!}/brain_profile">个人信息</a></li>
+					<li><a href="${basePath!}/games">全部训练</a></li>
+				</ul>
+				
+				<#include "/common/account_nav.html">
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+	<div class="main-content">
+	
+		<div class="container" id="main-container" >
+			<div class="gh-wrap" >
+
+				<div class="gh-title gh-center" id="pay-his-title" >您的支付历史</div>
+
+				<div class="pay-his-list" id="his-list">
+					
+					<h4 style="text-align: center;" id="no-his-title">您暂时没有支付记录！</h4>
+					<div style="overflow-x: auto;">
+					<table id="pay-his-tab">
+						<thead>
+							<tr>
+								<th class="type">分类</th>
+								<th class="time">支付时间</th>
+								<th class="name">购买项目|订单号</th>
+								<th class="amount">支付金额</th>
+								<th class="status">支付状态</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody id="pay-his-body">
+
+							<!-- <tr class="table-item">
+								<td class="img">
+									<div class="pay-circle pay-circle-blue ">支</div>
+								</td>
+								<td class="time">
+									<div>2018-07-20</div>
+									<div>14:19:33</div>
+								</td>
+								<td class="name">
+									<div>认知训练</div>
+									<div class="order-num" title="201807204ed4f6f726994f04b8f9b24b585bd404">201807204ed4f6f726994f04b8f9b24b585bd404</div>
+								</td>
+								<td class="amount">
+									100
+								</td>
+								<td class="status">成功</td>
+							</tr>
+							 -->
+
+						</tbody>
+					</table>
+					</div>
+					
+
+
+
+
+
+
+
+					
+				</div>
+				<div class="row gh-center">
+					<button class="btn load-more" id="load-pay-his" page="1">
+					加载更多
+					</button>
+					<br>
+					<button class="btn load-more" id="go-back">返回前页</button>
+					<br>
+					<div id="load-tip"></div>
+				</div>
+				
+				
+
+			</div>
+
+
+
+
+		</div>
+	
+	</div>
+<#include "/common/bottom.html">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="${basePath!}/assets/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="${basePath!}/assets/js/bootstrap.min.js"></script>
+
+
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		$("#go-back").click(function(){
+			window.location.href = "/settings";
+		});
+
+		$("#load-pay-his").click(function(){
+
+			var page=parseInt($(this).attr('page'));
+			//按钮加载事件
+			$("#load-tip").text("数据加载中...");
+			$.ajax({
+			url:'${basePath!}/settings/payment_history/page',
+			type:"POST",
+			data:{"page":page+1,"rows":8},
+			success:function(data){
+				
+
+				if(data==null||data.rows.length==0){
+					//没有支付历史
+					$("#load-tip").text("没有更多了！")
+					return;
+					
+				}
+				$("#load-pay-his").attr('page',page+1);
+				
+				$.each(data.rows,function(i,item){
+
+
+
+					var circle_type="";
+					console.log(item.payType);
+					if(item.payType==null){
+						item.payType="未知";
+						//circle_type="pay-circle-sky-blue";
+						circle_type="pay-circle-ygreen";
+					}
+					else if(item.payType=="支付宝"){
+						circle_type="pay-circle-blue";
+					}
+					else if(item.payType=="微信"){
+						circle_type="pay-circle-green";
+					}
+					else if(item.payType=="苹果内购"){
+						circle_type="pay-circle-sky-blue";
+					}
+					var circle_content=item.payType.substr(0,1);
+					var payRes="失败";
+					if(item.payStatus==1){
+						payRes="成功";
+					}
+/*					var str='<div class="pay-his-item"><div class="pay-left"><div class="pay-circle '+circle_type+' ">'+circle_content+'</div></div>'+
+						'<div class="pay-right">	\
+							<div class="pay-inf">\
+								<div class="inf-lab">\
+									<li>订单号</li>\
+									<li>支付时间</li>\
+									<li>购买项目</li>\
+									<li>支付金额</li>\
+									<li>支付状态</li>\
+								</div>'
+								+'<div class="inf-con"><li class="order-num" title="'+item.orderNo+'">'+item.orderNo
+								+'</li><li>'+item.payTime
+								+'</li><li>'+item.gameClassName
+								+'</li><li>'+item.payPrice
+								+'</li><li>'+payRes
+								+'</li>\
+								</div>\
+							</div>\
+						</div>\
+					</div>';*/
+
+
+					var str='<tr class="table-item"><td class="img"><div class="pay-circle '
+					+circle_type+'">'
+					+ circle_content+'</div></td><td class="time"><div>'
+					+item.payTime.substr(0,11)+'</div><div>'
+					+item.payTime.substr(11)+'</div></td><td class="name"><div>'
+					+item.gameClassName+'</div><div class="order-num" title="'
+					+item.orderNo+'">'+item.orderNo+'</div></td><td class="amount">'
+					+item.payPrice+'</td><td class="status">'
+					+payRes+'</td></tr>';
+
+					$("#pay-his-body").append(str);
+					$("#load-tip").text("");
+
+
+				});
+			},
+			error:function () {
+					// body...
+					$("#load-tip").text("数据加载失败！");
+				},
+			});
+
+
+		});
+
+
+		$.ajax({
+			url:'${basePath!}/settings/payment_history/page',
+			type:"POST",
+			data:{"page":1,"rows":8},
+			success:function(data){
+				
+
+				if(data==null||data.rows.length==0){
+					//没有支付历史
+					$("#pay-his-tab").hide();
+					$("#load-pay-his").hide();
+					$("#go-back").show();
+					return;
+					
+				}
+				$("#no-his-title").hide();
+				$("#go-back").hide();
+				$.each(data.rows,function(i,item){
+
+
+
+					var circle_type="";
+					
+					if(item.payType==null){
+						item.payType="未知";
+						//circle_type="pay-circle-sky-blue";
+						circle_type="pay-circle-ygreen";
+					}
+					else if(item.payType=="支付宝"){
+						circle_type="pay-circle-blue";
+					}
+					else if(item.payType=="微信"){
+						circle_type="pay-circle-green";
+					}
+					else if(item.payType=="苹果内购"){
+						circle_type="pay-circle-sky-blue";
+					}
+					var circle_content=item.payType.substr(0,1);
+					var payRes="失败";
+					if(item.status==1){
+						payRes="成功";
+					}
+					
+					var str='<tr class="table-item"><td class="img"><div class="pay-circle '
+					+circle_type+'">'
+					+ circle_content+'</div></td><td class="time"><div>'
+					+item.payTime.substr(0,11)+'</div><div>'
+					+item.payTime.substr(11)+'</div></td><td class="name"><div>'
+					+item.gameClassName+'</div><div class="order-num" title="'
+					+item.orderNo+'">'+item.orderNo+'</div></td><td class="amount">'
+					+item.payPrice+'</td><td class="status">'
+					+payRes+'</td></tr>';
+
+					$("#pay-his-body").append(str);
+
+
+				});
+			},
+			error:function () {
+				
+				$("#load-tip").text("数据加载失败！");
+			},
+		});
+	});
+
+</script>
+</body>
+</html>

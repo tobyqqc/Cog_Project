@@ -1,0 +1,55 @@
+<ul class="nav navbar-nav navbar-right">
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle cog-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			<img src="${basePath!}/resources/images/common/small.png" class="img-rounded" id="user_img">
+			${(session["userInfo"].userName)!} <span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li><a href="${basePath!}/settings">账户设置</a></li>
+			<#--<li><a href="${basePath!}/order">订购</a></li>-->
+			<li role="separator" class="divider"></li>
+			<li><a href="${basePath!}/logout">退出登录</a></li>
+		</ul>
+	</li>
+
+	
+	<a style="display: none;margin-top: 18px;" class="btn  btn-primary" id="become-vip" href="${basePath!}/payment" >成为会员</a>
+
+<script src="${basePath!}/assets/js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var h=$(window).height()-270;
+				$(".main-content").css({
+					'min-height':h+"px",
+				});
+				$("#main-content").css({
+					'min-height':h+"px",
+				});
+
+			$(window).resize(function(){
+				var h=$(window).height()-270;
+				$(".main-content").css({
+					'min-height':h+"px",
+				});
+				$("#main-content").css({
+					'min-height':h+"px",
+				});
+			});
+
+			$.ajax({
+				url:"${basePath!}/api/vipinfo",
+				type:"POST",
+				data:{"userId":'${session["userInfo"].userId!}'},
+				success:function(data){
+					if(data!=null&&data.isVip==0){
+						//is not vip
+						$("#become-vip").show();
+					}
+				},
+			});
+		});
+		
+		
+	</script>
+</ul>

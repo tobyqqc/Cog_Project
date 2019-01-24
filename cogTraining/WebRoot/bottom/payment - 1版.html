@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>认知训练平台</title>
+
+	<!-- Bootstrap -->
+	<link href="${basePath!}/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${basePath!}/assets/css/cog.css">
+		<link rel="stylesheet" type="text/css" href="${basePath!}/assets/css/gh.css"> 
+
+	
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+		<div class="container-fluid" id="navbar-content">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<#if (session["userInfo"])??>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="${basePath}/home" id="navbar-brand-text">CogDaily</a>
+
+
+			</div>
+			<#include "/common/account_nav.html">
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			
+			<#else>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="${basePath}/index" id="navbar-brand-text">CogDaily</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<form class="navbar-form navbar-right">
+					<a type="submit" class="btn btn-primary btn-cog" href="${basePath!}/register">
+						现在开始
+					</a>
+					<a type="submit" class="btn btn-inverse btn-cog" id="btn-login" href="${basePath!}/login">
+						登录
+					</a>
+				</form>
+			</div><!-- /.navbar-collapse -->
+			</#if>
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+	<!--main content-->
+	<div id="main-content">
+		<div id="part-1" style="background: none;">
+			<div class="container" id="about-part-1-inner">
+				<div class="row bluebg">
+					<div class="about-content-row">
+						<h3 class="whitetxt" style="margin-top: 10px;">成为会员</h3>
+					</div>
+
+				</div>
+				<div class="row about-content-row" margin-left:20px>
+					<form action="${basePath!}/alipayapi" class="alipayform" method="POST" target="_blank">
+						<table border="1" width="500px" height="100px" class="table table-bordered table-hover">
+							<#list list as trainClass>
+									<input type="hidden" id="gameClassIds" name="gameClassIds" value="${trainClass.gameClassIds}" />
+									<input type="hidden" id="orderNo" name="orderNo" value="" />
+									<tr style="background-color: #DCDCDC">
+										<th class="text-center" colspan="3">${trainClass.trainClassName}</th>
+									</tr>
+									<tr>
+										<th class="text-center">套餐</th>
+										<th class="text-center">价格/月</th>
+										<th class="text-center">是否购买</th>
+									</tr>	
+									<#list gameClassWithPriceList as gameClass>
+									<tr style="display: none">
+										<th class="text-center">
+											<input type="checkbox" class="checkboxClich" id="${gameClass.gameClassId}" 
+											name="gameClassId" value="${gameClass.price}" checked="checked">
+											${gameClass.gameClassName}
+										</th>
+										<th class="text-center">
+											${gameClass.price}
+										</th>
+										<th class="text-center">/</th>
+									</tr>	
+									</#list>
+									<tr>
+										<td class="text-center">
+											<select class="form-control form-check" id="gameDate" name="gameDate" onchange="changeGameDate();">
+												<#list gameClassTimes as gameClassTime>
+													<option value="${gameClassTime.time}" title="${gameClassTime.time}">${gameClassTime.value}</option>
+												</#list>
+											</select>
+										</td>
+										<input type="hidden" id="totalPrice" name="totalPrice" value />
+										<td class="text-center" id="totalPriceText" name="totalPriceText" value></td>
+										<td class="text-center">
+											<input id="wxPayBtn" type="button" value="微信购买">
+											<input id="aliPayBtn" type="button" value="支付宝购买">
+										</td>
+									</tr>
+							    </#list>
+						</table>
+					</form>
+				</div>
+				<div id="qrcodeDiv" class="row about-content-row"  style="display: none; margin-left:20px">
+					<label class="control-label col-md-2"></label>
+					<div class="col-md-10">
+						<p class="m-top-10 text-muted">付款二维码</p>		
+						<div id="qrcode"></div>
+						<p class="m-top-10 text-muted">打开微信扫一扫</p>
+						<input id="finish" type="button" value="完成">
+					</div>
+				</div>
+			</div>
+		</div>	
+		<#include "/common/bottom.html">
+	</div>
+	<!--main content-->
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="${basePath!}/assets/js/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="${basePath!}/assets/js/bootstrap.min.js"></script>
+	
+	<script src="${basePath!}/assets/qrcode/js/modernizr-2.8.3.js" type="text/javascript"></script>
+    <script src="${basePath!}/assets/qrcode/js/qrcode.min.js" type="text/javascript"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript">
+	
+		$(function() {
+		   init();
+		   if (isweixin()) {
+			   $("#aliPayBtn").hide();
+		   }
+		})
+	 
+		
+		function add() {
+			$("#outPrice").text(parseInt($("#outPrice").text()) + (20 * 10));
+			$("#gameDate").val(parseInt($("#gameDate").val()) + 10);
+		}
+		
+		function minus(){
+			if (parseInt($("#gameDate").val()) <= 20) {
+				alert("最小天数为20天");
+				return;
+			}
+			$("#outPrice").text(parseInt($("#outPrice").text()) - (20 * 10));
+			$("#gameDate").val(parseInt($("#gameDate").val()) - 10);
+		}
+		
+		// 初始化
+		 function init() {
+			total();
+			initBtn();
+			checkBoxOnClich();
+			finishBtn();
+		 }
+		
+		function initBtn() {
+			$("#wxPayBtn").click(function() {
+				submit2();
+			});
+			
+			$("#aliPayBtn").click(function(){
+				submit();
+			});
+		}
+		
+		function finishBtn() {
+			$("#finish").click(function() {
+				window.location.href = "${basePath}/home"
+			});
+		}
+		
+		// 支付宝支付
+		function submit() {
+			if (!checkBoxLength()) {
+				alert("请选择游戏类别");
+				return;
+			}
+			// var url = "${basePath!}/alipayapi";
+			//$("form .alipayform").attr("action", url);
+			//$("form").submit();
+			// 支付宝网页支付
+			$.ajax({
+                url : "${basePath!}/alipayapi/generateOrderNo",
+                method : "POST",
+                dataType : "JSON",
+                success : function(data) {
+                	console.log("orderNo:" + data.data);
+                	$("#orderNo").val(data.data);
+                	checkOrderStatus(data.data)
+                	$("form").submit();
+                },
+                error : function(data) {
+                	console.log("error:" + data.data);
+                }
+            });
+		
+			
+		 }
+		
+		// 确定提交支付
+		function submit2() {
+			if (!checkBoxLength()) {
+				alert("请选择游戏类别");
+				return;
+			}
+			if (isweixin()) {
+				// 微信公众号支付
+				// 微信网页支付
+				 $.ajax({
+	                url : "${basePath!}/wxPay",
+	                method : "POST",
+	                dataType : "JSON",
+	                data : {
+	                	gameClassIds : $("#gameClassIds").val(),
+	                	gameDate : $("#gameDate").val(),
+	                	type : "weixin"
+	                },
+	                success : function(data) {
+	                	 var obj = data.data
+	                	 console.log("obj:" + obj);
+	                	 if (obj == 'wxNoLogin') {
+	                		 window.location.href = "${basePath}/weixinLogin?type=weixin";
+	                	 }
+	                	 else {
+                		  WeixinJSBridge.invoke('getBrandWCPayRequest', {
+                              "appId": obj.appId,               //公众号名称，由商户传入
+                              "timeStamp": obj.timeStamp,       //时间戳，自 1970 年以来的秒数
+                              "nonceStr": obj.nonceStr,         //随机串
+                              "package": obj.package,           //商品包信息
+                              "signType": obj.signType,         //微信签名方式:
+                              "paySign": obj.paySign            //微信签名
+                          }, function (res) {
+                              if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                                  window.location.href = "${basePath}/aboutUs";
+                              }
+                              else {
+                                  window.history.back();
+                              }
+                          });
+	                	 }
+	                },
+	                error : function(data) {
+	                	var obj = eval('(' + data.data + ')');
+	                	 console.log("obj:" + obj);
+	                }
+				 });
+			}
+			else {
+				 // 微信网页支付
+				 $.ajax({
+	                url : "${basePath!}/wxPay",
+	                method : "POST",
+	                dataType : "JSON",
+	                data : {
+	                	gameClassIds : $("#gameClassIds").val(),
+	                	gameDate : $("#gameDate").val(),
+	                	type : "noweixin"
+	                },
+	                success : function(data) {
+	                	 $("#qrcodeDiv").show();
+	                	 f_onCreateQrcode(data.data.qrcodeUrl);
+	                	 
+	                	 // 轮询查询订单状态
+	                	 var orderNo= data.data.orderNo;
+	                	 console.log("orderNo:" + orderNo);
+	                	 checkOrderStatus(orderNo);
+	                }
+				 });
+			}
+		}
+		
+		function checkOrderStatus(orderNo) {
+			console.log("checkOrderStatus");
+			var repeat = 200;  // 限制执行次数为200次  
+            var timer = setInterval(function() {      
+                if (repeat == 0) {  
+                    clearInterval(timer);  
+                    //处理页面提示信息  
+                } else {  
+                    //Ajax后台轮询 查询订单状态  
+                    $.ajax({  
+                        url: "${basePath!}/order/checkStatus",  
+                        type: "post",  
+                        data: {  
+                            orderNo: orderNo  
+                        },  
+                        success: function(data) {  
+                            if(data == '1'){  
+                                clearInterval(timer);  
+                                window.location.href = "${basePath!}/home";  
+                            }  
+                        }  
+                    });  
+                      
+                    repeat--;  
+                }  
+            }, 3000);//3秒执行一次 总共200次 10分钟  
+		}
+		
+		function checkBoxLength() {
+			var flag = false;
+			$("input[name='gameClassId']:checkbox").each(function(i, item) {
+				if ($(this).is(":checked")) {
+					flag = true;
+					return flag;
+				}
+			});
+			return flag;
+		}
+		
+		// 选择游戏小类
+		function checkBoxOnClich() {
+			$(".checkboxClich").click(function() {
+				total();
+			});
+		}
+		
+		function changeGameDate() {
+			total();
+		}
+		
+		
+		// 计算总额
+	    function total() {
+			var gameClassIds = "";
+			var gameDate = $("#gameDate").val()
+			var outPrice = 0;
+			$("input[name='gameClassId']:checkbox").each(function(i, item) {
+				if ($(this).is(":checked")) {
+					var id = $(this).attr("id");
+					var price = $(this).val();
+					gameClassIds += id + ",";
+					outPrice += (price * gameDate);
+				}
+			});
+			$("#gameClassIds").val(gameClassIds);
+	    	$("#totalPriceText").text(outPrice);
+	    	$("#totalPrice").val(outPrice);
+		}
+	
+		// 生成二维码
+		 // 设置 qrcode 参数
+        var qrcode = new QRCode('qrcode', { 	
+            text: 'www.jq22.com',
+            width: 256,
+            height: 256,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        //生成二维码图像
+        function f_onCreateQrcode(codeUrl) {
+        	   // 使用 API
+            qrcode.clear();
+            qrcode.makeCode(codeUrl);
+        }
+
+        //清除二维码内容
+        function f_onClearQrcode() {
+        	 qrcode.clear();
+        }
+		
+        function isweixin() {
+        	var ua = window.navigator.userAgent.toLowerCase();
+        	//console.log(ua);//mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
+        	if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        		return true;
+        	} else {
+        		return false;
+        	}
+        }
+        
+		window.onload=function(){
+			var s_height=$(window).height();
+			var navbar_height=$("#navbar").outerHeight();
+			// $("#part-1").height(s_height-navbar_height);
+			$("#part-1").css("margin-top",navbar_height);
+			//$("#part-1").css("min-height",(s_height-navbar_height)+"px");
+  			$("#part-1").css("min-height",(656)+"px");
+  		}
+  	</script>
+  </body>
+  </html>
